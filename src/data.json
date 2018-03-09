@@ -1,0 +1,10 @@
+{
+  "data":
+  [
+    {"date": "monday"},
+    {"date": "tuesday"},
+    {"date": "wednesday"},
+    {"date": "thursday"},
+    {"date": "friday"}
+  ]
+}
