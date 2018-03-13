@@ -19,8 +19,8 @@ function Day(props){
   // render() {
 
     return (
-      <div className="time-table-column">{props.name}
-        <select id={props.name} onChange={(e) => chooseTime(props.name, e)}>
+      <div className="time-table-column" id={props.id}>{props.name}
+        <select  id={props.name} onChange={(e) => chooseTime(props.name, e)}>
           {
           times.map((time, index) => {
               return (
@@ -35,6 +35,8 @@ function Day(props){
 }
 
 function chooseTime(name) {
+  // var el = document.getElementById(name);
+  // console.log(el);
   var el = document.getElementById(name);
   var value = el.options[el.selectedIndex].value;
   console.log(name, value);
@@ -44,11 +46,9 @@ class TimeTable extends Component {
   render() {
     return (
       <div className="component container">
-        <div>
             {Data.data.map((item, index) => {
-               return <Day key={index} name={item.date} />
+               return <Day key={index} id={'col-' + item.date} name={item.date} />
             })}
-        </div>
       </div>
     );
   }
