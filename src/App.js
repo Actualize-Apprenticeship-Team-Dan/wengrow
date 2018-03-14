@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase.js';
-import Days from './Days';
+import Days from './components/Days';
 import moment from 'moment';
 
 class App extends Component {
