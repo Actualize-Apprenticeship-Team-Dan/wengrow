@@ -9,6 +9,7 @@ let appointmentsRef = firebase.database().ref('appointments');
 class App extends Component {
    constructor(props) {
     super(props);
+    this.weekCounter = 0;
     this.state = {
       availableTimeSlots: [
         "9:00am-10:00am" ,
@@ -20,8 +21,7 @@ class App extends Component {
         "3:00pm-4:00pm"  ,
         "4:00pm-5:00pm"
       ],
-      currentDate: Date.now(),
-      currentWeek: this.getCurrentWeek(),
+      currentWeek: this.getCurrentWeek(this.weekCounter),
       reservedTimeSlots: []
     };
   }
@@ -40,8 +40,8 @@ class App extends Component {
     event.target.setAttribute("disabled", "");
   }
 
-  getCurrentWeek() {
-    const startOfWeek = moment().startOf('isoWeek');
+  getCurrentWeek(counter) {
+    const startOfWeek = moment().startOf('isoWeek').add(counter, 'week');
     let days = [];
     let day = startOfWeek;
     while (days.length < 5) {
@@ -51,11 +51,21 @@ class App extends Component {
     return days;
   }
 
+  changeWeek(n) {
+    this.weekCounter = this.weekCounter + n;
+    this.setState({ currentWeek: this.getCurrentWeek(this.weekCounter) })
+
+  }
+
   render() {
     return (
       <div className="App">
         <h1> Available Days </h1>
         <h2> Today: { moment(this.state.currentDate).format('dddd, MM-DD-YYYY') } </h2>
+          { this.weekCounter > 0 ?
+            <button onClick={(e) => {this.changeWeek(-1)}}>Previous Week</button> : null
+          }
+        <button onClick={(e) => {this.changeWeek(1)}}>Next Week</button>
         <Days 
           currentWeek={this.state.currentWeek}
           availableTimeSlots={this.state.availableTimeSlots}

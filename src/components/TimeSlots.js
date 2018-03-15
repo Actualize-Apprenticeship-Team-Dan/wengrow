@@ -7,7 +7,7 @@ class TimeSlots extends Component {
       this.props.availableTimeSlots.map((time, i) => {
         let value = `${moment(this.props.day).format('MM-DD-YYYY')}, ${time}`;
         let disabled = !!this.props.reservedTimeSlots.filter(function(o) {
-          return o.time == value;
+          return o.time === value;
         }).length > 0
         return (
           <button 
