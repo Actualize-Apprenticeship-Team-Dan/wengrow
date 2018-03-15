@@ -7,13 +7,14 @@ class Days extends Component {
     return (
       <div className="days">
           {
-            this.props.data.currentWeek.map((day, i) => {
+            this.props.currentWeek.map((day, i) => {
               return (
                 <div key={i}>
                   <h3> {moment(day).format('dddd, MM-DD-YYYY')} </h3>
                   <TimeSlots 
                     day={day}
-                    availableTimeSlots={this.props.data.avaiableTimeSlots}
+                    availableTimeSlots={this.props.availableTimeSlots}
+                    reservedTimeSlots={this.props.reservedTimeSlots}
                     onClick={this.props.onClick}
                   />
                 </div>

@@ -4,28 +4,39 @@ import firebase from './firebase.js';
 import Days from './components/Days';
 import moment from 'moment';
 
+let appointmentsRef = firebase.database().ref('appointments');
+
 class App extends Component {
    constructor(props) {
     super(props);
-    const data = {
-      avaiableTimeSlots: [
-        "9:00am - 10:00am",
-        "10:00am - 11:00am",
-        "11:00am - 12:00pm",
-        "12:00pm - 1:00pm",
-        "1:00pm - 2:00pm",
-        "2:00pm - 3:00pm",
-        "3:00pm - 4:00pm",
-        "4:00pm - 5:00pm"
+    this.state = {
+      availableTimeSlots: [
+        "9:00am-10:00am" ,
+        "10:00am-11:00am",
+        "11:00am-12:00pm",
+        "12:00pm-1:00pm" ,
+        "1:00pm-2:00pm"  ,
+        "2:00pm-3:00pm"  ,
+        "3:00pm-4:00pm"  ,
+        "4:00pm-5:00pm"
       ],
       currentDate: Date.now(),
-      currentWeek: this.getCurrentWeek()
+      currentWeek: this.getCurrentWeek(),
+      reservedTimeSlots: []
     };
-    this.state = {data: data};
+  }
+
+  componentWillMount() {
+    appointmentsRef.on('value', snapshot => {
+      var reservedTimeSlots = Object.values(snapshot.val());
+      this.setState({ reservedTimeSlots : reservedTimeSlots });
+    });
   }
 
   handleClick(event) {
-    console.log(event.target.value);
+    let value = event.target.value;
+    console.log(value);
+    appointmentsRef.push({time: value, client: 'jay@harry.com'});
     event.target.setAttribute("disabled", "");
   }
 
@@ -44,8 +55,13 @@ class App extends Component {
     return (
       <div className="App">
         <h1> Available Days </h1>
-        <h2> Today: { moment(this.state.data.currentDate).format('dddd, MM-DD-YYYY') } </h2>
-        <Days data={this.state.data} onClick={this.handleClick} />
+        <h2> Today: { moment(this.state.currentDate).format('dddd, MM-DD-YYYY') } </h2>
+        <Days 
+          currentWeek={this.state.currentWeek}
+          availableTimeSlots={this.state.availableTimeSlots}
+          reservedTimeSlots={this.state.reservedTimeSlots}
+          onClick={this.handleClick}
+        />
       </div>
     );
   }

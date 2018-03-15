@@ -6,7 +6,16 @@ it('renders without crashing', () => {
   const div = document.createElement('div'),
     day = Date.now(), 
     availableTimeSlots = [],
-    handleClick = () => {};
-  ReactDOM.render(<TimeSlots day={day} availableTimeSlots={availableTimeSlots} onClick={handleClick} />, div);
+    handleClick = () => {},
+    disabled = false;
+
+  ReactDOM.render(
+    <TimeSlots 
+      day={day}
+      availableTimeSlots={availableTimeSlots}
+      onClick={handleClick}
+      disabled={disabled}
+    />, div);
+    
   ReactDOM.unmountComponentAtNode(div);
 });
