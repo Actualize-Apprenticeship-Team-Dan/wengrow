@@ -1,34 +1,32 @@
 import React, { Component } from 'react';
 import ClickTimeTable from './ClickTimeTable';
-
+import Moment from 'react-moment';
 
 class TimeTable extends Component {
   render() {
     const title = 'Wengrow\'s Appointments';
+    const currentDay = Date.now();
     const data =  [
-    {"date": "monday"},
-    {"date": "tuesday"},
-    {"date": "wednesday"},
-    {"date": "thursday"},
-    {"date": "friday"},
-    {"date": "saturday"}
-
-
-  ];
+      {"date": currentDay}
+    ];
     return (
-      <div className="component">
+      <table>
+        <tbody className="component">
         <tr>
-          {
-            data.map(item => {
-              return (
-                <td className="Time-Table">
-                  {item["date"]}
-                </td>
-              );
+          {data.map(function(item, i){
+            return (
+              <td key={i}>
+                <Moment format="dddd">{item.date}</Moment>
+                <Moment add={{ days: 1 }} format="dddd">{item.date}</Moment>
+                <Moment add={{ days: 2 }} format="dddd">{item.date}</Moment>
+                <Moment add={{ days: 3 }} format="dddd">{item.date}</Moment>
+                <Moment add={{ days: 4 }} format="dddd">{item.date}</Moment>
+              </td>)
             })
           }
-        </tr>
-      </div>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 }
