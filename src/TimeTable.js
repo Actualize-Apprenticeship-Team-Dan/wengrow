@@ -1,33 +1,20 @@
 import React, { Component } from 'react';
-import ClickTimeTable from './ClickTimeTable';
+import Day from './Day'
 
+function chooseTime(name) {
+  var el = document.getElementById(name);
+  var value = el.options[el.selectedIndex].value;
+  console.log(name, value);
+}
 
 class TimeTable extends Component {
   render() {
-    const title = 'Wengrow\'s Appointments';
-    const data =  [
-    {"date": "monday"},
-    {"date": "tuesday"},
-    {"date": "wednesday"},
-    {"date": "thursday"},
-    {"date": "friday"},
-    {"date": "saturday"}
-
-
-  ];
     return (
-      <div className="component">
-        <tr>
-          {
-            data.map(item => {
-              return (
-                <td className="Time-Table">
-                  {item["date"]}
-                </td>
-              );
-            })
-          }
-        </tr>
+      <div className="component container">
+            {
+              this.props.data.days.map((item, index) => {
+               return(<Day key={index} id={'col-' + item.date} name={item.date} times={this.props.data.times} />)
+            })}
       </div>
     );
   }
