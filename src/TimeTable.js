@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import ClickTimeTable from './ClickTimeTable';
 import Moment from 'react-moment';
+import moment from 'moment';
 
 class TimeTable extends Component {
   render() {
     const title = 'Wengrow\'s Appointments';
     const currentDay = Date.now();
-    const data =  [
-      {"date": currentDay}
-    ];
+    console.log(currentDay);
+    var firstDayOfTheWeek = moment().startOf('week');
+    console.log(firstDayOfTheWeek);
+    const days = [];
+    for(var i=0; i<5; i++){
+      days.push(moment(firstDayOfTheWeek.add(1, 'day')))
+    }
     return (
       <table>
         <tbody className="component">
         <tr>
-          {data.map(function(item, i){
+          {days.map(function(item, i){
             return (
               <td key={i}>
-                <Moment format="dddd">{item.date}</Moment>
-                <Moment add={{ days: 1 }} format="dddd">{item.date}</Moment>
-                <Moment add={{ days: 2 }} format="dddd">{item.date}</Moment>
-                <Moment add={{ days: 3 }} format="dddd">{item.date}</Moment>
-                <Moment add={{ days: 4 }} format="dddd">{item.date}</Moment>
+                <Moment format="dddd">{item}</Moment>
               </td>)
             })
           }
