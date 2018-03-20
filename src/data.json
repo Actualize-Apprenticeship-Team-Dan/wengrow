@@ -1,12 +1,4 @@
 {
-  "days":
-  [
-    {"date": "monday"},
-    {"date": "tuesday"},
-    {"date": "wednesday"},
-    {"date": "thursday"},
-    {"date": "friday"}
-  ],
   "times": [
     "8:00 AM",
     "9:00 AM",
