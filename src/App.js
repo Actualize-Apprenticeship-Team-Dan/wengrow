@@ -13,15 +13,15 @@ for(var i=0; i<5; i++){
 
 let appointmentsRef = firebase.database().ref('appointments');
 
-
 class App extends Component {
   constructor(props) {
     super(props)
     const title = 'Wengrow\'s Appointments'
-    this.state ={
+    this.state = {
       reservedTimeSlots: []
     }
   }
+
   
   componentWillMount() {
     appointmentsRef.on('value', snapshot => {
@@ -31,13 +31,15 @@ class App extends Component {
   };
 
   render() {
+    let reserved = this.state.reservedTimeSlots.map(function(o){return o.time;})
+
+    {console.log(reserved)}
     return (
       <div className="App">
-        {console.log(this.state.reservedTimeSlots)}
         <h1>
         {this.title}
         </h1>
-      <TimeTable data={Data} days={days} />
+      <TimeTable data={Data} days={days} reserved={reserved}/>
       </div>
     )
   }
