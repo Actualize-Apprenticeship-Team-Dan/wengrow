@@ -13,11 +13,12 @@ class Day extends Component {
       <div
         className="time-table-column"
         id={this.props.day}>
-        <Moment format="dddd">{this.props.day}</Moment>
+        <Moment format="dddd Do">{this.props.day}</Moment>
         <select
           onChange={(e) => chooseTime(this.props.day.format('dddd'), e)}>
           {
-          this.props.times.map((time, index) => {
+            // console.log(this.props.data.times)
+          this.props.data.times.map((time, index) => {
               return (
                 <option key={index}>{time}</option>
               );
