@@ -58,6 +58,7 @@ class App extends Component {
         <TimeTable
           data={Data}
           days={this.state.days}
+          reserved={reserved}
           />
         <button
           onClick={() => {this.nextWeek(-1)}}
