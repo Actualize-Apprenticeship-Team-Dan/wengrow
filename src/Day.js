@@ -21,7 +21,7 @@ class Day extends Component {
       <div
         className="time-table-column"
         id={this.props.day}>
-        <Moment format="dddd Do">{this.props.day}</Moment>
+        <Moment format="MMM dddd Do">{this.props.day}</Moment>
         <select
           onChange={(e) => chooseTime(date, e)}>
           {
