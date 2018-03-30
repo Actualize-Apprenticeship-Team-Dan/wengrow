@@ -27,18 +27,5 @@
   to { transform: rotate(360deg); }
 }
 
-.time-table-column {
-  border-style: solid;
-  border-width: 2px 2px 2px 2px;
-  padding: 2px 2px 2px 2px;
-}
-
-.day-container {
-  display:grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-}
-
-.Time-Table{
-  border-style: solid;
-}
+.btn { margin: 5px; }
 

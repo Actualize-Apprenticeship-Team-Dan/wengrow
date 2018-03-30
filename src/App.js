@@ -12,7 +12,7 @@ let appointmentsRef = firebase.database().ref('appointments');
 class App extends Component {
   constructor(props) {
     super(props)
-    const title = 'Wengrow\'s Appointments';
+    this.title = 'Wengrow\'s Appointments';
     this.state = {
       reservedTimeSlots: [],
       days: [
@@ -50,27 +50,29 @@ class App extends Component {
   render() {
     let reserved = this.state.reservedTimeSlots.map(function(o){return o.time;})
 
-    {console.log(reserved)}
     return (
-      <div className="App">
-        <h1>
-          {this.title}
-        </h1>
-        <TimeTable
-          data={Data}
-          days={this.state.days}
-          reserved={reserved}
-          />
-        <button
-          onClick={() => {this.nextWeek(-1)}}
-          style={this.isCurrentWeek()}
-          className='btn btn-primary'
-          > Previous Week
-        </button>
-        <button
-          onClick={() => {this.nextWeek(1)}}
-          > Next Week
-        </button>
+      <div className="App container">
+        <div className="page-header">
+          <h1>{this.title}</h1>
+        </div>
+        <div className="jumbotron">
+          <TimeTable
+            data={Data}
+            days={this.state.days}
+            reserved={reserved}
+            />
+          <button
+            onClick={() => {this.nextWeek(-1)}}
+            style={this.isCurrentWeek()}
+            className="btn btn-info"
+            > Previous Week
+          </button>
+          <button
+            onClick={() => {this.nextWeek(1)}}
+            className="btn btn-info"
+            > Next Week
+          </button>
+        </div>
       </div>
     )
   }
