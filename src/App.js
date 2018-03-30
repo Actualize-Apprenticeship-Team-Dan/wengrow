@@ -24,6 +24,7 @@ class App extends Component {
     }
 
   }
+
   
   componentWillMount() {
     appointmentsRef.on('value', snapshot => {
@@ -46,6 +47,9 @@ class App extends Component {
   }
 
   render() {
+    let reserved = this.state.reservedTimeSlots.map(function(o){return o.time;})
+
+    {console.log(reserved)}
     return (
       <div className="App">
         <h1>
