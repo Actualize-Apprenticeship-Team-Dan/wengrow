@@ -19,13 +19,14 @@ class Day extends Component {
 
     return (
       <div
-      className="time-table-column"
-      id={this.props.day}>
-        <Moment format="dddd, MMMM D">{this.props.day}</Moment>
+        className="time-table-column"
+        id={this.props.day}>
+        <Moment format="dddd Do">{this.props.day}</Moment>
         <select
           onChange={(e) => chooseTime(date, e)}>
           {
-          this.props.times.map((time, index) => {
+            // console.log(this.props.data.times)
+          this.props.data.times.map((time, index) => {
               return (
                 <option key={index}
                   disabled={isTaken.includes(`${date} ${time}`)}

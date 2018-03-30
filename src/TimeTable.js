@@ -7,8 +7,9 @@ class TimeTable extends Component {
       <div className="component container">
             {
               this.props.days.map((item, index) => {
-               return(<Day key={index} id={'col-' + item} day={item} times={this.props.data.times} reserved={this.props.reserved}/>)
-            })}
+               return(<Day data={this.props.data} key={index} id={'col-' + item} day={item} />)
+              })
+            }
       </div>
     );
   }
