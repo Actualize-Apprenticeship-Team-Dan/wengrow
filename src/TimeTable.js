@@ -4,7 +4,7 @@ import Day from './Day'
 class TimeTable extends Component {
   render() {
     return (
-      <div className="component container">
+      <div className="component day-container">
             {
               this.props.days.map((item, index) => {
                 return(

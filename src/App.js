@@ -4,6 +4,7 @@ import TimeTable from './TimeTable';
 import Data from './data';
 import moment from 'moment';
 import firebase from './firebase.js';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 let appointmentsRef = firebase.database().ref('appointments');
@@ -63,6 +64,7 @@ class App extends Component {
         <button
           onClick={() => {this.nextWeek(-1)}}
           style={this.isCurrentWeek()}
+          className='btn btn-primary'
           > Previous Week
         </button>
         <button
