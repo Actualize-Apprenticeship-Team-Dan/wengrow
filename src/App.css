@@ -33,7 +33,7 @@
   padding: 2px 2px 2px 2px;
 }
 
-.container {
+.day-container {
   display:grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
 }
