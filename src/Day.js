@@ -7,7 +7,9 @@ let appointmentsRef = firebase.database().ref('appointments');
 function chooseTime(name, e) {
   var el = e.target;
   var value = el.options[el.selectedIndex].value;
-  appointmentsRef.push({time: `${name} ${value}`, client: 'jay@harry.com'})
+  var timeString = `${name} ${value}`;
+  var email = prompt("Gimme your email and social, suckah: ")
+  appointmentsRef.push({time: timeString, client: email});
 }
 
 
