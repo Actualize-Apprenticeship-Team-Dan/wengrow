@@ -68,15 +68,17 @@ class App extends Component {
           data={Data}
           days={this.state.days}
           reserved={reserved}
+          className='Time-Table'
           />
         <button
           onClick={() => {this.nextWeek(-1)}}
           style={this.isCurrentWeek()}
-          className='btn btn-primary'
+          className='btn btn-primary next-butt'
           > Previous Week
         </button>
         <button
           onClick={() => {this.nextWeek(1)}}
+          className='btn btn-primary next-butt'
           > Next Week
         </button>
       </div>

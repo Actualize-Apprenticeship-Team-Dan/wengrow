@@ -4,13 +4,11 @@ import firebase from './firebase.js';
 
 let appointmentsRef = firebase.database().ref('appointments');
 
-function chooseTime(name, e) {
-  var el = e.target;
-  var value = el.options[el.selectedIndex].value;
-  var timeString = `${name} ${value}`;
+function chooseTime(datetime, e) {
   var email = prompt("Gimme your email and social, suckah: ")
-  if (email === null) { return; }
-  appointmentsRef.push({time: timeString, client: email});
+  if (email === null) {return;}
+  appointmentsRef.push({time: datetime, client: email});
+
 }
 
 
@@ -24,21 +22,22 @@ class Day extends Component {
       <div
         className="time-table-column"
         id={this.props.day}>
-        <Moment format="MMM dddd Do">{this.props.day}</Moment>
-        <select
-          onChange={(e) => chooseTime(date, e)}>
+        <Moment format="dddd, MMM Do">{this.props.day}</Moment>
           {
-            // console.log(this.props.data.times)
           this.props.data.times.map((time, index) => {
               return (
-                <option key={index}
-                  disabled={isTaken.includes(`${date} ${time}`)}
-                  >{time}
-                </option>
+                <div>
+                  <button
+                    className="btn btn-primary time-butt"
+                    onClick={(e) => chooseTime(`${date} ${time}`, e)} 
+                    key={index}
+                    disabled={isTaken.includes(`${date} ${time}`)}
+                    >{time}
+                  </button>
+                </div>
               );
             })
           }
-        </select>
       </div>
     );
   }
