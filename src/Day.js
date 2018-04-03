@@ -10,6 +10,15 @@ function chooseTime(datetime, e) {
   appointmentsRef.push({time: datetime, client: email});
 }
 
+function getClient(r, datetime) {
+  // console.log(r);
+  var match = r.filter(function(o){
+    return (o.time === datetime) 
+  })
+  return (match.length) ? match[0].client :'Time is available!'
+}
+
+
 
 class Day extends Component {
   render() {
@@ -21,18 +30,27 @@ class Day extends Component {
       <div
         className="time-table-column"
         id={this.props.day}>
-        <Moment format="dddd, MMM Do">{this.props.day}</Moment>
+        <Moment format="dddd, MMM Do" style={'font-weight':"bold"}>{this.props.day}</Moment>
           {
             // console.log(this.props.data.times)
           this.props.data.times.map((time, index) => {
               return (
                 <div>
                   <button
-                    className="btn btn-primary time-butt"
+                    className="btn btn-primary time-butt tooltipz"
                     onClick={(e) => chooseTime(`${date} ${time}`, e)} 
                     key={index}
-                    disabled={isTaken.includes(`${date} ${time}`)}
-                    >{time}
+                    disabled={
+                      isTaken.map( function(reservation){ 
+                        return reservation.time;
+                      })
+                      .includes(`${date} ${time}`)
+                    }
+                    >
+                      {time}
+                      <span className='tooltiptext'>
+                        {getClient(isTaken, `${date} ${time}`)}
+                      </span>
                   </button>
                 </div>
               );
