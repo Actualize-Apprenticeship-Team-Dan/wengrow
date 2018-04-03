@@ -7,12 +7,15 @@ import firebase from './firebase.js';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
+
+
+
 let appointmentsRef = firebase.database().ref('appointments');
 
 class App extends Component {
   constructor(props) {
     super(props)
-    const title = 'Wengrow\'s Appointments';
+    this.title = 'Wengrow\'s Appointments';
     this.state = {
       reservedTimeSlots: [],
       days: [
@@ -53,9 +56,14 @@ class App extends Component {
     {console.log(reserved)}
     return (
       <div className="App">
-        <h1>
-          {this.title}
-        </h1>
+        <div className="jumbotron">
+        <img src="../Clippers.png" class="img-circle scissors" />
+        <img src="../JayWengrow.png" class="img-rounded scissors"/>
+        <img src="../Clippers.png" class="img-circle scissors" />
+          <h1 className="display-3">
+            {this.title}
+          </h1>
+        </div>
         <TimeTable
           data={Data}
           days={this.state.days}

@@ -9,6 +9,7 @@ function chooseTime(name, e) {
   var value = el.options[el.selectedIndex].value;
   var timeString = `${name} ${value}`;
   var email = prompt("Gimme your email and social, suckah: ")
+  if (email === null) { return; }
   appointmentsRef.push({time: timeString, client: email});
 }
 

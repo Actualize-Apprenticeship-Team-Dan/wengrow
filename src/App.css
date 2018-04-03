@@ -7,6 +7,12 @@
   height: 80px;
 }
 
+.scissors {
+  background-color: coral;
+  padding: 50px;
+
+}
+
 .App-header {
   background-color: #222;
   height: 150px;
