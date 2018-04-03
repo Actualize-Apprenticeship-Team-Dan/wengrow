@@ -31,7 +31,7 @@ class Day extends Component {
       <div
         className="time-table-column"
         id={this.props.day}>
-        <Moment format="dddd, MMM Do" style={'font-weight':"bold"}>{this.props.day}</Moment>
+        <Moment format="dddd, MMM Do">{this.props.day}</Moment>
           {
           this.props.data.times.map((time, index) => {
               return (
