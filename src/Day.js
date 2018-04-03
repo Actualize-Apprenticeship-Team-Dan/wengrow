@@ -8,6 +8,7 @@ function chooseTime(datetime, e) {
   var email = prompt("Gimme your email and social, suckah: ")
   if (email === null) {return;}
   appointmentsRef.push({time: datetime, client: email});
+
 }
 
 
@@ -23,7 +24,6 @@ class Day extends Component {
         id={this.props.day}>
         <Moment format="dddd, MMM Do">{this.props.day}</Moment>
           {
-            // console.log(this.props.data.times)
           this.props.data.times.map((time, index) => {
               return (
                 <div>
