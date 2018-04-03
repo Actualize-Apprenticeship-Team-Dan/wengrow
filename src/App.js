@@ -53,7 +53,7 @@ class App extends Component {
   render() {
     let reserved = this.state.reservedTimeSlots.map(function(o){return o.time;})
 
-    {console.log(reserved)}
+    {console.log(this.state.reservedTimeSlots)}
     return (
       <div className="App">
         <div className="jumbotron">
@@ -67,7 +67,7 @@ class App extends Component {
         <TimeTable
           data={Data}
           days={this.state.days}
-          reserved={reserved}
+          reserved={this.state.reservedTimeSlots}
           className='Time-Table'
           />
         <button
