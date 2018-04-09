@@ -7,6 +7,12 @@
   height: 80px;
 }
 
+.scissors {
+  background-color: coral;
+  padding: 20px;
+
+}
+
 .App-header {
   background-color: #222;
   height: 150px;
@@ -29,16 +35,60 @@
 
 .time-table-column {
   border-style: solid;
-  border-width: 2px 2px 2px 2px;
-  padding: 2px 2px 2px 2px;
+  border-width: 2px;
+  padding: 10px;
 }
 
-.container {
+.day-container {
+  background-color: #f0f0f0;
   display:grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
 }
 
-.Time-Table{
-  border-style: solid;
+.time-butt{
+  width:100%;
+  margin-top: 3px;
 }
 
+.next-butt {
+  margin: 10px;
+}
+
+.tooltipz {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltipz .tooltiptext {
+  visibility: hidden;
+  width: 146px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  bottom: 31px;
+}
+
+.tooltipz .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltipz:hover .tooltiptext {
+  visibility: visible;
+}

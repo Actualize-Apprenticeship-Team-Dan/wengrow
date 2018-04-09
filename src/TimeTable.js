@@ -4,11 +4,20 @@ import Day from './Day'
 class TimeTable extends Component {
   render() {
     return (
-      <div className="component container">
+      <div className="component day-container">
             {
               this.props.days.map((item, index) => {
-               return(<Day key={index} id={'col-' + item} day={item} times={this.props.data.times} />)
-            })}
+                return(
+                  <Day 
+                    data={this.props.data}
+                    key={index}
+                    id={'col-' + item}
+                    day={item}
+                    reserved={this.props.reserved}
+                  />
+                )
+              })
+            }
       </div>
     );
   }
